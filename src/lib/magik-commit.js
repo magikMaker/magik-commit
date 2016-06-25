@@ -33,7 +33,7 @@ module.exports = {
         var commands = [
             'COMMIT_EDITMSG=$1',
             'addBranchName() {',
-            '  NAME=$(git branch | grep \'*\' | sed \'s/* .*\/\([A-Z]*-[0-9]*\).*/\\1/\')',
+            '  NAME=$(git branch | grep \'*\' | sed \'s/* .*\\/\\([A-Z]*-[0-9]*\\).*/\\1/\')',
             '  echo "$NAME $(cat $COMMIT_EDITMSG)" > $COMMIT_EDITMSG',
             '}',
             'MERGE=$(cat $COMMIT_EDITMSG|grep \'^Merge\'|wc -l)',
