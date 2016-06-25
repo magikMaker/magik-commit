@@ -1,13 +1,25 @@
 'use strict';
 
 /**
- * Creates a list of all Git contributors, sorts them and then adds them as
- * contributors to package.json
+ * use magik-hooks to handle Git hooks manipulation
+ *
+ * @access private
+ * @link https://github.com/magikMaker/magik-hooks
+ * @type {{create: module.exports.create, remove: module.exports.remove}}
  */
+const magikHooks = require('magik-hooks');
 
-var magikHooks = require('magik-hooks');
-
-var ANSI_COLOURS = {
+/**
+ * Constants to change the text colours in `stdout`, use `ANSI_COLOURS.RESET`
+ * to reset to default
+ * @example
+ * <code>
+ * process.stdout.write(`${ANSI_COLOURS.YELLOW}text in yellow${ANSI_COLOURS.RESET}`);
+ * </code>
+ * @access private
+ * @type {{BLACK: string, BLUE: string, CYAN: string, DEFAULT: string, GREEN: string, MAGENTA: string, RED: string, RESET: string, WHITE: string, YELLOW: string}}
+ */
+const ANSI_COLOURS = {
     BLACK: '\x1b[30m',
     BLUE: '\x1b[34m',
     CYAN: '\x1b[36m',
@@ -20,17 +32,30 @@ var ANSI_COLOURS = {
     YELLOW: '\x1b[33m'
 };
 
-var id = 'magik-commit';
+/**
+ * identifier used by magik-hooks
+ *
+ * @access private
+ * @type {string}
+ */
+const id = 'magik-commit';
 
+/**
+ * Automagically adds the Jira issue ID to the commit message, Public API
+ *
+ * @type {{create: module.exports.create, remove: module.exports.remove}}
+ */
 module.exports = {
 
     /**
-     * Creates a Git hook which will write the Jira ticket ID into the commit
+     * Creates a Git hook which will prepend the Jira ticket ID into the commit
      * message
      *
+     * @access public
+     * @returns {void}
      */
     createCommitMessageHook: function() {
-        var commands = [
+        const commands = [
             'COMMIT_EDITMSG=$1',
             'addBranchName() {',
             '  NAME=$(git branch | grep \'*\' | sed \'s/* .*\\/\\([A-Z]*-[0-9]*\\).*/\\1/\')',
@@ -44,14 +69,17 @@ module.exports = {
 
         // create the actual hook
         magikHooks.create('prepare-commit-msg', commands.join('\n'), id);
-        process.stdout.write(`${ANSI_COLOURS.YELLOW}\n\rmagik-commit installed\n\r${ANSI_COLOURS.RESET}`);
+        process.stdout.write(`${ANSI_COLOURS.YELLOW}\nmagik-commit installed: prepare-commit-msg Git hook created.\n\n${ANSI_COLOURS.RESET}`);
     },
 
     /**
      * Removes the commit message git hook
+     *
+     * @access public
+     * @returns {void}
      */
     removeCommitMessageHook: function(){
         magikHooks.remove('prepare-commit-msg', id);
-        process.stdout.write(`${ANSI_COLOURS.YELLOW}\n\rmagik-commit uninstalled\n\r${ANSI_COLOURS.RESET}`);
+        process.stdout.write(`${ANSI_COLOURS.YELLOW}\nmagik-commit uninstalled: prepare-commit-msg Git hook removed\n\n${ANSI_COLOURS.RESET}`);
     }
 };
