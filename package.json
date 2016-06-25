@@ -4,26 +4,33 @@
   "description": "Adds the Jira issue number to the commit message",
   "main": "./src/lib/index.js",
   "scripts": {
-    "release": "node scripts/build.js",
     "postinstall": "node ./src/bin/install.js",
     "preuninstall": "node ./src/bin/uninstall.js",
     "test": "eslint ./src && tape './src/**/*.spec.js'"
   },
   "keywords": [
-    "contributors",
+    "branch",
+    "branch name",
+    "commit",
+    "commit message",
     "git",
     "githook",
+    "githooks",
+    "hook",
+    "hooks",
+    "jira",
     "magikMaker",
     "npm",
-    "package"
+    "ticket",
+    "issue"
   ],
-  "homepage": "https://github.com/magikMaker/npm-contributors",
+  "homepage": "https://github.com/magikMaker/magik-commit",
   "repository": {
     "type": "git",
-    "url": "git@github.com:magikMaker/npm-contributors.git"
+    "url": "git@github.com:magikMaker/magik-commit.git"
   },
   "bugs": {
-    "url": "https://github.com/magikMaker/npm-contributors/issues"
+    "url": "https://github.com/magikMaker/magik-commit/issues"
   },
   "author": "Bjørn Wikkeling",
   "license": "MIT",
