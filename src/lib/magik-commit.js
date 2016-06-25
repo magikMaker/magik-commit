@@ -61,10 +61,10 @@ module.exports = {
         const commands = [
             'COMMIT_EDITMSG=$1',
             'addBranchName() {',
-            '  NAME=$(git branch | grep \'*\' | sed \'s/* .*\\/\\([A-Z]+-[0-9]+\\)-.*/\\1/\')',
+            '  NAME=$(git branch | grep \'*\' | sed \'s/(?:\\* .+\\/)?\\([A-Z]+-[0-9]+\\)-?.*/\\1/\')',
             '  echo "$NAME $(cat $COMMIT_EDITMSG)" > $COMMIT_EDITMSG',
             '}',
-            'MERGE=$(cat $COMMIT_EDITMSG|grep \'^Merge\'|wc -l)',
+            'MERGE=$(cat $COMMIT_EDITMSG | grep \'^Merge\' | wc -l)',
             'if [ $MERGE -eq 0 ] ; then',
             '  addBranchName',
             'fi'
