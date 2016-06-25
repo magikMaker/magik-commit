@@ -11,7 +11,8 @@ const magikHooks = require('magik-hooks');
 
 /**
  * Constants to change the text colours in `stdout`, use `ANSI_COLOURS.RESET`
- * to reset to default
+ * to reset to default.
+ *
  * @example
  * <code>
  * process.stdout.write(`${ANSI_COLOURS.YELLOW}text in yellow${ANSI_COLOURS.RESET}`);
@@ -33,7 +34,7 @@ const ANSI_COLOURS = {
 };
 
 /**
- * identifier used by magik-hooks
+ * Identifier used by magik-hooks
  *
  * @access private
  * @type {string}
@@ -41,7 +42,9 @@ const ANSI_COLOURS = {
 const id = 'magik-commit';
 
 /**
- * Automagically adds the Jira issue ID to the commit message, Public API
+ * Automagically adds the Jira issue ID to the commit message, a Jira issue ID
+ * has the following format `JIRA-33`. So it starts with capital letters
+ * followed by a dash and then a number, for instance `XXX-42`.
  *
  * @type {{create: module.exports.create, remove: module.exports.remove}}
  */
@@ -58,7 +61,7 @@ module.exports = {
         const commands = [
             'COMMIT_EDITMSG=$1',
             'addBranchName() {',
-            '  NAME=$(git branch | grep \'*\' | sed \'s/* .*\\/\\([A-Z]*-[0-9]*\\).*/\\1/\')',
+            '  NAME=$(git branch | grep \'*\' | sed \'s/* .*\\/\\([A-Z]+-[0-9]+\\)-.*/\\1/\')',
             '  echo "$NAME $(cat $COMMIT_EDITMSG)" > $COMMIT_EDITMSG',
             '}',
             'MERGE=$(cat $COMMIT_EDITMSG|grep \'^Merge\'|wc -l)',
