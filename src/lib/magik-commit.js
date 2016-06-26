@@ -71,7 +71,7 @@ module.exports = {
         const commands = [
             'COMMIT_MSG=$1',
             'addBranchName() {',
-            '  NAME=$(git branch | grep \'*\' | sed -nE \'s/\\* (.+(\/|-|_))?([A-Z]+-[0-9]+).*/\\3/p\')',
+            '  NAME=$(git branch | grep \'*\' | sed -nE \'s/\\* (.+(\\/|-|_))?([A-Z]+-[0-9]+).*/\\3/p\')',
             '  echo "$NAME $(cat $COMMIT_MSG)" > $COMMIT_MSG',
             '}',
             'MERGE=$(cat $COMMIT_MSG | grep \'^Merge\' | wc -l)',
