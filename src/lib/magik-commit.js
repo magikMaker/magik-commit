@@ -43,9 +43,19 @@ const id = 'magik-commit';
 
 /**
  * Automagically adds the Jira issue ID to the commit message, a Jira issue ID
- * has the following format `JIRA-33`. So it starts with capital letters
- * followed by a dash and then a number, for instance `XXX-42`.
+ * has the following format `JIRA-42`. So it starts with capital letters
+ * followed by a dash and then a number, for instance `XXX-42`. The ticket ID
+ * is parsed from the Git branch name that is currently active
  *
+ * examples of possible branch names, assuming ticket ID is JIRA-42
+ * - JIRA-42
+ * - JIRA-42-description-here
+ * - feature-JIRA-42
+ * - feature-JIRA-42-description-here
+ * - feature/JIRA-42
+ * - feature/JIRA-42-description-here
+ * - feature_JIRA-42
+ * - feature_JIRA-42-description-here
  * @type {{create: module.exports.create, remove: module.exports.remove}}
  */
 module.exports = {
@@ -59,12 +69,12 @@ module.exports = {
      */
     createCommitMessageHook: function() {
         const commands = [
-            'COMMIT_EDITMSG=$1',
+            'COMMIT_MSG=$1',
             'addBranchName() {',
-            '  NAME=$(git branch | grep \'*\' | sed \'s/(?:\\* .+\\/)?\\([A-Z]+-[0-9]+\\)-?.*/\\1/\')',
-            '  echo "$NAME $(cat $COMMIT_EDITMSG)" > $COMMIT_EDITMSG',
+            '  NAME=$(git branch | grep \'*\' | sed -nE \'s/\\* (.+(\/|-|_))?([A-Z]+-[0-9]+).*/\\3/p\')',
+            '  echo "$NAME $(cat $COMMIT_MSG)" > $COMMIT_MSG',
             '}',
-            'MERGE=$(cat $COMMIT_EDITMSG | grep \'^Merge\' | wc -l)',
+            'MERGE=$(cat $COMMIT_MSG | grep \'^Merge\' | wc -l)',
             'if [ $MERGE -eq 0 ] ; then',
             '  addBranchName',
             'fi'
