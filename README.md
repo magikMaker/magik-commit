@@ -1,9 +1,25 @@
 magik-commit
 ------------
-This adds the Jira issue id to the commit message. Make sure that the
-issue id is in the branch name, this can easily be achieved by using the
-'create branch' link on the issue's details page. 
-([Bitbucket docs](https://confluence.atlassian.com/bitbucketserver/jira-integration-776639874.html))
+Automagically adds the Jira issue ID to the commit message. A Jira issue ID 
+has the following format `JIRA-42`. So it starts with capital letters followed 
+by a dash and then a number, for instance `XXX-42`. 
+
+This script parses the ticket ID from the Git branch name from the currently
+active branch. Examples of possible branch names, assuming ticket ID is JIRA-42.
+- JIRA-42
+- JIRA-42-description-here
+- feature/JIRA-42
+- feature/JIRA-42-description-here
+- feature-JIRA-42
+- feature-JIRA-42-description-here
+- feature_JIRA-42
+- feature_JIRA-42-description-here
+
+The recommended format is: 'feature/JIRA-42-description-here'.
+
+To easily get the Jira Ticket ID in the branch name, use the 'create branch' 
+link on the ticket's details page. This link is available after integrating
+Bitbucket with Jira. For more information, see the [Bitbucket documentation](https://confluence.atlassian.com/bitbucketserver/jira-integration-776639874.html).
 
 Installation
 ------------
