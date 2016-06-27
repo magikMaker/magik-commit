@@ -1,5 +1,5 @@
 magik-commit
-------------
+============
 [![NPM version](https://badge.fury.io/js/magik-hooks.svg)](http://badge.fury.io/js/magik-commit)
 
 Automagically adds the Jira ticket ID to the commit message. A Jira issue ID 
@@ -41,6 +41,12 @@ To uninstall, simply type this on the command line:
 ```bash
 $ npm uninstall --save-dev magik-commit
 ```
+
+Windows
+-------
+Please note that this package only runs on macOS and BSD/*nix type systems. If
+you would like to run this on an unsupported OS, please 
+[create a ticket](https://github.com/magikMaker/magik-commit/issues).
 
 License
 =======
