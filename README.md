@@ -1,11 +1,13 @@
 magik-commit
 ------------
-Automagically adds the Jira issue ID to the commit message. A Jira issue ID 
+[![NPM version](https://badge.fury.io/js/magik-hooks.svg)](http://badge.fury.io/js/magik-commit)
+
+Automagically adds the Jira ticket ID to the commit message. A Jira issue ID 
 has the following format `JIRA-42`. So it starts with capital letters followed 
 by a dash and then a number, for instance `XXX-42`. 
 
 This script parses the ticket ID from the Git branch name from the currently
-active branch. Examples of possible branch names, assuming ticket ID is JIRA-42.
+active branch. Examples of possible branch names, assuming ticket ID is `JIRA-42`.
 - JIRA-42
 - JIRA-42-description-here
 - feature/JIRA-42
@@ -13,9 +15,9 @@ active branch. Examples of possible branch names, assuming ticket ID is JIRA-42.
 - feature-JIRA-42
 - feature-JIRA-42-description-here
 - feature_JIRA-42
-- feature_JIRA-42-description-here
+- feature_JIRA-42_description_here
 
-The recommended format is: 'feature/JIRA-42-description-here'.
+The recommended format is: `feature/JIRA-42-description-here`.
 
 To easily get the Jira Ticket ID in the branch name, use the 'create branch' 
 link on the ticket's details page. This link is available after integrating
@@ -31,7 +33,7 @@ $ npm install --save-dev magik-commit
 Usage
 -----
 After installation the Git commit messages you create are automagically 
-augmented with the Jira issue ID.
+augmented with the Jira ticket ID.
 
 Uninstall
 ---------
