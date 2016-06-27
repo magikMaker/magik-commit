@@ -1,6 +1,6 @@
 magik-commit
 ============
-[![NPM version](https://badge.fury.io/js/magik-hooks.svg)](http://badge.fury.io/js/magik-commit)
+[![NPM version](https://badge.fury.io/js/magik-commit.svg)](http://badge.fury.io/js/magik-commit)
 
 Automagically adds the Jira ticket ID to the commit message. A Jira issue ID 
 has the following format `JIRA-42`. So it starts with capital letters followed 
