@@ -1,6 +1,6 @@
 {
   "name": "magik-commit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Automagically adds the Jira ticket ID to the Git commit message.",
   "main": "./src/lib/index.js",
   "scripts": {
