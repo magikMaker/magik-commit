@@ -1,3 +1,10 @@
+
+Windows
+git branch | findstr *
+https://blogs.msdn.microsoft.com/zainnab/2007/07/08/grep-and-sed-with-powershell/
+https://www.howtogeek.com/261591/how-to-create-and-run-bash-shell-scripts-on-windows-10/
+
+
 magik-commit
 ============
 [![NPM version](https://badge.fury.io/js/magik-commit.svg)](http://badge.fury.io/js/magik-commit)
