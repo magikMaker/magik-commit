@@ -82,7 +82,7 @@ module.exports = {
 
         // create the actual hook
         magikHooks.create('prepare-commit-msg', commands.join('\n'), id);
-        process.stdout.write(`${ANSI_COLOURS.YELLOW}\nmagik-commit installed: prepare-commit-msg Git hook created.\n\n${ANSI_COLOURS.RESET}`);
+        process.stdout.write(`${ANSI_COLOURS.GREEN}\n✔ magik-commit installed: prepare-commit-msg Git hook created.\n\n${ANSI_COLOURS.RESET}`);
     },
 
     /**
@@ -93,6 +93,6 @@ module.exports = {
      */
     removeCommitMessageHook: function(){
         magikHooks.remove('prepare-commit-msg', id);
-        process.stdout.write(`${ANSI_COLOURS.YELLOW}\nmagik-commit uninstalled: prepare-commit-msg Git hook removed\n\n${ANSI_COLOURS.RESET}`);
+        process.stdout.write(`${ANSI_COLOURS.GREEN}\n✔ magik-commit uninstalled: prepare-commit-msg Git hook removed\n\n${ANSI_COLOURS.RESET}`);
     }
 };
