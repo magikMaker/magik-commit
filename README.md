@@ -4,7 +4,7 @@ magik-commit
 
 Automagically adds the Jira ticket ID to the commit message. A Jira issue ID 
 has the following format `JIRA-42`. So it starts with capital letters followed 
-by a dash and then a number, for instance `XXX-42`. 
+by a dash and then a number, for instance `XXX-42`.
 
 This script parses the ticket ID from the Git branch name from the currently
 active branch. Examples of possible branch names, assuming ticket ID is `JIRA-42`.
