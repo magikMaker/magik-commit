@@ -51,7 +51,7 @@ you would like to run this on an unsupported OS, please
 License
 =======
 
-Copyright (C) 2016 Bjørn Wikkeling (magikMaker)
+Copyright (C) 2016 - 2018 Bjørn Wikkeling (magikMaker)
 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of 
